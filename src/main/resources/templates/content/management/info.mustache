@@ -1,0 +1,122 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>캠핑장 관리</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/search.css" />
+    <link rel="stylesheet" href="/css/camping.css" />
+    <link rel="stylesheet" href="/css/campinginfo.css" />
+
+    <title>YOLO Camping</title>
+</head>
+<body>
+    <section id="header" class="container">
+        <div class="align">
+            <div class="clogo">
+                <img src="/image/company-logo/logo-b.png" alt="회사로고" />
+            </div>
+        </div>
+    </section>
+
+    <section id="campinfo" class="container">
+        <div class="flex j-b">
+            <label>캠핑장 정보</label>
+            <a onclick="campingUpdate()" class="addr addbtn">수정하기</a>
+        </div>
+    {{#result}}
+        <div class="card mb-3">
+            <div class="flex">
+                <img src="/image/camping/default.jpg" alt="img" class="card-img"/>
+
+                <div class="card-body col-8">
+                    <div class="form-group flex">
+                        <label for="name" class="col-form-label col-4">캠핑장 이름</label>
+                        <input type="text" class="form-control col-8 disable" readonly id="c_name" value="{{campingName}}" />
+                    </div>
+                    <div class="form-group flex">
+                        <label for="address" class="col-form-label col-4">주소</label>
+                        <input type="text" class="form-control col-8 disable" readonly id="address" value="{{campingAddress}}" />
+                    </div>
+                    <div class="form-group flex">
+                        <label for="phone" class="col-form-label col-4">연락처</label>
+                        <input type="text" class="form-control " id="phone" value="{{campingPhone}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="info">캠핑장 정보</label>
+                        <textarea class="campinginfo form-control" id="info" placeholder="캠핑장 설명란입니다.">{{campingInfo}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/result}}
+    </section>
+
+    <section id="roominfo" class="container">
+        <div class="flex j-b">
+            <label>객실정보</label>
+            <div>
+                <a onclick="roomAdd()" class="addr addbtn">객실 추가</a>
+                <a onclick="roomUpdate()" class="addr addbtn">객실 수정</a>
+            </div>
+        </div>
+        <div class="room">
+            {{#result.roomDtos}}
+            <div class="card roomlist">
+                <div class="flex">
+                    <div class="col-5">
+                        <img src="/image/camping/{{roomImg}}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-7 rinfo">
+                        <div class="card-body">
+                            <div class="form-group flex">
+                                <label for="people" class="col-form-label col-4">객실 이름</label>
+                                <input type="text" class="form-control col-8 roominfo" name="name" value="{{roomName}}" />
+                            </div>
+                            <div class="form-group flex">
+                                <label for="people" class="col-form-label col-4">1박 기준 가격</label>
+                                <input type="text" class="form-control col-8 roominfo" name="price" value="{{roomPrice}}" />
+                            </div>
+                            <div class="form-group flex">
+                                <label for="people" class="col-form-label col-4">최소 / 최대 인원수</label>
+                                <input type="text" class="form-control col-4 roominfo" name="min" value="{{roomMin}}" />
+                                <input type="text" class="form-control col-4 roominfo" name="max" value="{{roomMax}}" />
+                            </div>
+                            <div class="form-group flex">
+                                <label for="roomtype" class="col-form-label col-4">객실타입</label>
+                                <select name="roomtype" class="form-control roominfo">
+                                    <option value="glamping">글램핑</option>
+                                    <option value="auto">오토캠핑</option>
+                                    <option value="caravan">카라반</option>
+                                    <option value="pension">팬션</option>
+                                </select>
+                            </div>
+                            <div class="form-group flex">
+                                <label for="people" class="col-form-label col-4">객실 개수</label>
+                                <input type="text" class="form-control col-8 roominfo" name="count" value="{{roomCount}}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="people" class="col-form-label col-4">객실 정보</label>
+                                <textarea class="form-control roominfo">{{roomInfo}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/result.roomDtos}}
+        </div>
+    </section>
+
+
+
+    </body>
+
+    <script src ="/js/manager.js"></script>
+    <script src="https://kit.fontawesome.com/ef95c4be0b.js" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</html>

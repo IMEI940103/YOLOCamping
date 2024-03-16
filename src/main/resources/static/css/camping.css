@@ -1,0 +1,62 @@
+.border{
+    margin:20px 0px;
+    padding:10px 0;
+    border:1px solid #000;
+    display: flex;
+}
+
+    .main-image{
+        width:300px;
+        height:200px;
+    }
+
+    .card-img{
+        width:300px;
+        height:200px;
+    }
+
+label{
+    display: block;
+    font-size:18px;
+    font-weight:600;
+    text-align:left;
+    color:#35627B;
+}
+
+.room{
+    border-top:2px solid #35627B;
+}
+    .room .card{
+        border: none;
+        border-radius: 0px;
+    }
+    .room .card:nth-child(2n){
+        border: 1px solid #35627B;
+        border-left : none;
+        border-right: none;
+    }
+
+    .rinfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .room .card-title{
+        padding: 0 10px 5px 0;
+        font-family: "noto-b";
+        color:#000;
+        display: flex;
+        justify-content: space-between;
+        border-bottom:1px solid #35627B;
+    }
+
+    .booking{
+        width:100%;
+        padding:2px 0px;
+        text-align: center;
+        background-color: #35627B;
+        color: #fff;
+    }
+
+

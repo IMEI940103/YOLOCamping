@@ -1,0 +1,31 @@
+
+.addbtn{
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    padding: 3px 15px;
+    line-height: 28px;
+}
+
+
+#campinfo .j-b label{
+    color: #FAC171;
+}
+#campinfo .j-b .addr{
+    background-color: #FAC171;
+}
+
+.campinginfo{
+    height: 120px;
+}
+
+.form-group label{
+    font-size: 15px;
+}
+
+.j-b{
+    justify-content: space-between;
+}
+    #roominfo .j-b .addr{
+        background-color: #35627B;
+    }

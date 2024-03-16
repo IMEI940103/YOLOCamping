@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="/css/booking.css" />
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<div class="container">
+    <div class="row">
+        <div class="person-info col-6">
+            <h5>예약자 정보</h5>
+            <div class="form-group">
+                <label for="name"> 예약자 이름 </label>
+                <input type="text" class="form-control" id="name" name="name" value="" placeholder="체크인시 필요한 정보입니다." />
+            </div>
+            <div class="form-group">
+                <label for="phone"> 휴대폰 번호 </label>
+                <input type="text" class="form-control" id="phone" name="phone" value="" placeholder="체크인시 필요한 정보입니다." />
+            </div>
+            <label>결제수단 선택</label>
+            <div class="form-group">
+                <select class="form-control" name="booking_payment">
+                    <option value="card">신용/체크카드</option>
+                    <option value="naverpay">네이버페이</option>
+                    <option value="kakaopay">카카오페이</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <input type="checkbox" id="con1">
+                    <label class="col-form-label">숙소이용규칙 및 취소 / 환불규정동의</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="con2">
+                    <label class="col-form-label">개인정보수집 및 이용동의</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="con3">
+                    <label class="col-form-label">개인정보 제 3자 제공동의</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="con4">
+                    <label class="col-form-label"> 만 14세 이상 확인 </label>
+                </div>
+            </div>
+        </div>
+        <div class="room-info col-6">
+            <div class="total">
+                <div class="title">캠핑장</div>
+                <div class="value">{{campingName}}</div>
+            </div>
+            <div class="total">
+                <div class="title">객실</div>
+                <div class="value">{{roomName}}</div>
+            </div>
+            <div class="total">
+                <div class="title">체크인 / 체크아웃</div>
+                <div class="value">{{startday}} / {{endday}} </div>
+            </div>
+            <div class="line"></div>
+            <div class="total">
+                <div class="title">
+                    총 결제금액
+                    <span>(VAT포함)</span>
+                </div>
+                <div class="value">{{price}}</div>
+            </div>
+            <ul>
+                <li>해당 객실가는 세금,봉사료가 포함된 금액입니다.</li>
+                <li>결제완료 후 예약자 이름으로 체크인 하시면 됩니다.</li>
+                <li>자세한 문의사항은 캠핑장 연락처로 문의하시길 바랍니다.</li>
+            </ul>
+            <a href="javascript:;" onclick="check()" class="btn col-12 button">결제하기</a>
+        </div>
+    </div>
+</div>
+
+

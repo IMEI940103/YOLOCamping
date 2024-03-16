@@ -1,0 +1,44 @@
+       
+    .fail{        
+        border-bottom:5px solid #35627B;
+        padding:0 20px;
+        margin: 50px 0;
+        text-align:center;
+        font-size: 25px;
+    }
+
+    .card{
+        padding:20px 0px;
+        border-width:1px 0px;
+        border-color: #FAC171;        
+    }
+
+    .card-img{
+        width: 200px; 
+        height: 150px;        
+        margin-right: 25px;
+    }
+
+    .title{
+        font-weight: bolder;
+        font-size: 20px;
+    }
+
+    .subtitle span{
+        padding-right: 52px;
+        font-size: 13px;
+        color: #888;        
+    }
+    .subtitle span i{
+        color:#35627B;
+        font-size: 17px;
+        margin-right:10px;
+    }
+    .subtitle span:last-child i{
+        transform:rotateY(180deg);
+    }
+
+    .card-text{
+        font-size: 12px;
+    }
+    

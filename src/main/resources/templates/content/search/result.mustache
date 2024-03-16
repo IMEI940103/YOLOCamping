@@ -1,0 +1,43 @@
+
+{{>layout/header}}
+
+{{>content/search/detailed}}
+
+    <section id="result" class="container">
+        <div class="succese">
+            {{#result}}
+                <div class="card mb-3">
+                    <div class="flex">
+                        <a onclick="camping({{campingNo}})" class="card-img">
+                            <img src="/Camping/image/camping/default.jpg" alt="img"/>
+                        </a>
+                        </a>
+                        <div class="card-body col-8">
+                            <a onclick="camping({{campingNo}})">
+                                <div class="card-title title"> {{campingName}} </div>
+                                <h4 class="card-subtitle subtitle">
+                                    <span>
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        {{campingAddress}}
+                                    </span>
+                                    <span>
+                                        <i class="fas fa-phone-alt"></i>
+                                        {{campingPhone}}
+                                    </span>
+                                </h4>
+                                <p class="card-text">
+
+                                </p>
+                            </a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {{/result}}
+        </div>
+        {{^result}}
+            <div class="fail"> 검색 결과가 없습니다.</div>
+        {{/result}}
+    </section>
+
+{{>layout/footer}}

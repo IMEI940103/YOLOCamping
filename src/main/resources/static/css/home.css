@@ -1,0 +1,64 @@
+/*
+    main페이지에 들어가는 css파일
+*/
+
+.silde{
+    overflow:hidden;
+    width:100%;
+    height:400px;
+    display: flex;
+}
+.silde li{width:100%;height:100%;position:relective;}
+
+.types{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+    .types li{
+        width:90px;
+        height:90px;
+        border-radius: 50%;
+        padding:10px;
+        background-color: beige;
+        text-align:center;
+    }
+	.icon_box i{font-size:40px;}
+
+
+#best{
+    background:lightcyan;
+    padding:35px;
+    border-top:1px solid lightblue;
+    border-bottom:1px solid lightblue;
+}
+	.best_list{
+        display: flex;
+        justify-content: space-between;
+        height:250px;
+    }
+		.best_camping{
+            width:100%;
+            height:100%;
+        }
+		    .camping_name{
+                height:50px;
+                width:100%;
+                position:absolute;
+                z-index:10;
+                left:0;bottom:0;
+                background-color: #333;
+                opacity:0.8;
+                color:#f7f4f3;
+                text-align:center;
+                line-height:50px;
+                font-size:16px;
+            }
+
+#review{padding:25px 0;}
+    .review_list{
+        display:flex;
+        justify-content:space-between;
+        height: 300px;
+        overflow-y: hidden;
+    }

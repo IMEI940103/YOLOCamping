@@ -1,0 +1,109 @@
+.reserve-box{
+    margin-top:20px;
+}
+    .box-top{
+        width:100%;
+        background-color:#00ADAC;
+        font-family: "noto";
+        display: flex;
+    }
+        .box-top li{
+            width:33%;
+            padding:25px 0;
+            text-align: center;
+            font-size: 18px;
+            font-family: "noto-m";
+        }
+    .box-content{
+        width:100%;
+    }
+        .box-content li{
+            width:100%;
+        }
+            .box-content li span{
+                display: inline-block;
+                width:33%;
+                padding:10px 0 10px 10px;
+                font-family: "noto-r";
+                font-size: 15px;
+            }
+            .Camping-situation{
+                text-align: center;
+            }
+            .Camping-situation a{
+                padding:10px 25px;
+                font-family:"noto-m";
+            }
+
+
+
+/* 캠핑예약페이지 */
+#modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+}
+.modal_n{display:none;}
+.modal_b{display:block;}
+
+    .modal_close{
+        background-color: #fff;
+        width: 830px;
+        height: 30px;
+        margin:auto;
+    }
+    .modal_body{
+        width : 800px;
+        height: 500px;
+        margin: auto;
+    }
+
+.person-info{
+    padding:10px;
+    width:400px;
+    background-color: #fff;
+}
+    .checkbox{
+        height: auto;
+        text-align: left;
+        font-size: 15px;
+        display:flex;
+        padding:5px 0;
+    }
+.room-info{
+    background-color: #79e0d9;
+    padding:10px;
+    width:400px;
+}
+    .total{
+        padding:20px 0;
+        display: flex;
+    }
+
+    .total .title{
+        width:150px;
+        font-size: 15px;
+    }
+    .title span{
+        font-size: 12px;
+    }
+
+    .total .value{
+        font-weight: 600;
+        background-color: #35627b;
+        height: 30px;
+    }
+    .line{
+        border:1px solid #35627b;
+    }
+
+    .button{
+        padding: 5px 0px;
+        background-color: #35627b;
+        color:#f7f3f4;
+    }

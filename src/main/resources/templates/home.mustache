@@ -1,0 +1,104 @@
+
+{{>layout/header}}
+
+    <section id="events" class="container">
+        <div class="silde-box">
+            <ul class="silde">
+                <li>
+                    <img src="/image/event04.png" />
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="types_list" class="container">
+        <ul class="types row">
+            <li>
+                <a class="icon_box" id="glamping" onclick="simple('glamping')">
+                    <i class="fas fa-campground"></i>
+                    <p>글램핑</p>
+                </a>
+            </li>
+            <li>
+                <a class="icon_box" id="caravan"  onclick="simple('caravan')">
+                    <i class="fas fa-caravan"></i>
+                    <p>카라반</p>
+                </a>
+            </li>
+            <li>
+                <a class="icon_box" id="auto" onclick="simple('auto')">
+                    <i class="fas fa-hiking"></i>
+                    <p>오토캠핑</p>
+                </a>
+            </li>
+            <li>
+                <a class="icon_box" id="pension" onclick="simple('pension')">
+                    <i class="fas fa-campground"></i>
+                    <p>팬션</p>
+                </a>
+            </li>
+            <li>
+                <a class="icon_box" id="pet" onclick="simple('pet')">
+                    <i class="fas fa-paw"></i>
+                    <p>반려동물</p>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    {{>content/search/detailed}}
+
+    <section id="best">
+        <div class="container">
+            <h5>인기 캠핑장</h5>
+            <div class="best_list">
+                <a href="./search/camping.jsp?" class="card best_camping">
+                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
+                    <div class="camping_name">이름이름이름</div>
+                </a>
+                <a href="./search/camping.jsp?" class="card best_camping">
+                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
+                    <div class="camping_name">이름이름이름</div>
+                </a>
+                <a href="./search/camping.jsp?" class="card best_camping">
+                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
+                    <div class="camping_name">이름이름이름</div>
+                </a>
+                <a href="./search/camping.jsp?" class="card best_camping">
+                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
+                    <div class="camping_name">이름이름이름</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="review">
+        <div class="container">
+            <h5>베스트 리뷰</h5>
+            <div class="review_list">
+                <a href="./search/camping.jsp?" class="card col-4">
+                    <img src="/Camping/image/camping01.png" class="card-img-top" alt="캠핑장메인사진"  />
+                    <div class="card-body">
+                        <div class="card-title">이름이름이름</div>
+                        <div class="card-text">내용내용내용내용</div>
+                    </div>
+                </a>
+                <a href="./search/camping.jsp?" class="card col-4">
+                    <img src="/Camping/image/camping01.png" class="card-img-top" alt="캠핑장메인사진"  />
+                    <div class="card-body">
+                        <div class="card-title">이름이름이름</div>
+                        <div class="card-text">내용내용내용내용</div>
+                    </div>
+                </a>
+                <a href="./search/camping.jsp?" class="card col-4">
+                    <img src="/Camping/image/camping01.png" class="card-img-top" alt="캠핑장메인사진"  />
+                    <div class="card-body">
+                        <div class="card-title">이름이름이름</div>
+                        <div class="card-text">내용내용내용내용</div>
+                    </div>
+                </a>
+            </div>
+    </section>
+
+
+{{>layout/footer}}
