@@ -21,7 +21,7 @@ public class CampingDto {
     private String campingImg;  // 이미지
     private String campingPhone; // 연락처
     private List<Room> rooms;   // 캠핑장 객실
-    private List<RoomDto> roomDtos;
+    private List<RoomDto> roomDto;
 
     public CampingDto(Camping camping){
         this.campingNo = camping.getCampingNo();
@@ -31,7 +31,7 @@ public class CampingDto {
         this.campingImg = camping.getCampingImg();
         this.campingPhone = camping.getCampingPhone();
         this.rooms = camping.getRooms();
-        this.roomDtos = rooms.stream().map(RoomDto::new).collect(Collectors.toList());
+        this.roomDto = rooms.stream().map(RoomDto::new).collect(Collectors.toList());
     }
 
     public Camping toEntity(){
@@ -39,7 +39,7 @@ public class CampingDto {
                 .campingName(campingName)
                 .campingAddress(campingAddress)
                 .campingInfo(campingInfo)
-                .campingImg(campingImg)
+                .campingImg("default.jpg")
                 .campingPhone(campingPhone)
                 .build();
     }

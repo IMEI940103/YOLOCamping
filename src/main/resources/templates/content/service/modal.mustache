@@ -1,0 +1,74 @@
+<section id="modal" class="modal_n">
+    <div class="modal_close" onclick="modal_window()"></div>
+    <div class="modal_body">
+        <div class="row">
+            <div class="person-info col-6">
+                <div class="form-group">
+                    <label for="name"> 예약자 이름 </label>
+                    <input type="text" class="form-control" id="name" name="name" value="" placeholder="체크인시 필요한 정보입니다." />
+                </div>
+                <div class="form-group">
+                    <label for="phone"> 휴대폰 번호 </label>
+                    <input type="text" class="form-control" id="phone" name="phone" value="" placeholder="체크인시 필요한 정보입니다." />
+                </div>
+                <label>결제수단 선택</label>
+                <div class="form-group">
+                    <select class="form-control" id="payment" name="payment">
+                        <option value="card">신용/체크카드</option>
+                        <option value="naverpay">네이버페이</option>
+                        <option value="kakaopay">카카오페이</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <input type="checkbox" id="con1" class="col-1">
+                        <label class="col-form-label col-10">숙소이용규칙 및 취소 / 환불규정동의</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="con2" class="col-1">
+                        <label class="col-form-label col-10">개인정보수집 및 이용동의</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="con3" class="col-1">
+                        <label class="col-form-label col-10">개인정보 제 3자 제공동의</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="con4" class="col-1">
+                        <label class="col-form-label col-10"> 만 14세 이상 확인 </label>
+                    </div>
+                </div>
+            </div>
+            <div class="room-info col-6">
+                <input type="hidden" id="roomNo" />
+                <input type="hidden" id="price" />
+                <div class="form-group">
+                    <label class="title">캠핑장</label>
+                    <div class="value"></div>
+                </div>
+                <div class="form-group">
+                    <label class="title">객실</label>
+                    <div class="value"></div>
+                </div>
+                <div class="form-group">
+                    <label class="title">숙박일</label>
+                    <div class="value"></div>
+                </div>
+                <div class="line"></div>
+                <div class="form-group row">
+                    <label class="title">
+                        총 결제금액
+                        <span>(VAT포함)</span>
+                    </label>
+                    <div class="value"></div>
+                    <span>원</span>
+                </div>
+                <ul>
+                    <li>해당 객실가는 세금,봉사료가 포함된 금액입니다.</li>
+                    <li>결제완료 후 예약자 이름으로 체크인 하시면 됩니다.</li>
+                    <li>자세한 문의사항은 캠핑장 연락처로 문의하시길 바랍니다.</li>
+                </ul>
+                <a onclick="booking()" class="btn col-12 button">결제하기</a>
+            </div>
+        </div>
+    </div>
+</section>

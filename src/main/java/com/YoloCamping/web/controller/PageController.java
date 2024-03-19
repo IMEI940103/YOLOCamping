@@ -15,17 +15,20 @@ public class PageController {
 
     final private SearchService searchService;
 
-    @GetMapping (value = {"yolocamping","yolo"})
+    @GetMapping (value = {"yolocamping","yolo"}) // 사용자 페이지
     public String home_Page(Model model){
-        model.addAttribute("cssfile","home");
         return "home";
     }
 
-    @GetMapping(value = {"관리","admin"})
+    @GetMapping(value = {"관리","admin"}) // 관리자페이지
     public String management_Page(Model model){
         model.addAttribute("result", searchService.find_AllCamping());
-        model.addAttribute("cssfile","search_result");
         return "content/management/home";
+    }
+
+    @GetMapping("camp/add") // 캠핑장 등록페이지
+    public String addCamp_Page(){
+        return "content/management/add";
     }
 
 }

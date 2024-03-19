@@ -1,9 +1,16 @@
+// 캠핑장 추가
+function campingSave(){
 
-// 캠핑장 수정
-function campingUpdate(){
-    const responseUrl = "/manager/camp/update";
-    const name = document.getElementById("c_name");
-    const address = document.getElementById("address");
+    Array roomList = roomAllSave();
+
+    if(roomList == null){
+        alert("하나 이상의 객실은 필수적으로 입력해주세요.");
+        return false;
+    }
+    const responseUrl = "/manager/camp/save";
+
+    let name = document.getElementById("c_name");
+    let address = document.getElementById("address");
     let phone = document.getElementById("phone");
     let info = document.getElementById("info");
 
@@ -11,54 +18,68 @@ function campingUpdate(){
         "campingName" : name.value,
         "campingAddress" : address.value,
         "campingPhone" : phone.value,
-        "campingInfo" : info.value
+        "campingInfo" : info.value,
+        "roomDto" : roomList
     }
 
-    dataConvey(responseData,responseUrl, "PUT");
-
+    dataConvey(responseData, responseUrl, "POST");
 }
 
-// 캠핑장 삭제
-function campingDelete(){
-    const responseUrl = "/manager/camp/delete";
+// 객실 전체 저장
+function roomAllSave(){
+        const valueList = document.querySelectorAll(".rinfo");
+        let roomList = new Array();
 
-    let name = document.getElementById("c_name");
-
-    responseData = {
-        "campingName" : name.value;
-    }
-
-    dataConvey(responseData, responseUrl, "DELETE");
-}
-
-// 데이터 전달.
-function dataConvey(responseData, responseUrl, Method){
-
-    $.ajax({
-        url: responseUrl,
-        dataType: "text",
-        contentType: "application/json; charset=utf-8",
-        method: Method,
-        data: JSON.stringify(responseData),
-        success : function(text){
-            alert("작업이 완료되었습니다.");
-            let url = window.location.href;
-            location.replace(url);
-        },
-        error : function(text){
-            alert("다시 시도해주세요.");
+        if(valueList.length == 0){
+            return null;
         }
-    });
 
+        for(let i = 0; i < valueList.length; i++){
+            let info = valueList[i].querySelectorAll(".roominfo");
+
+            let room = {
+                "roomName" : info[0].value,
+                "roomPrice" : info[1].value,
+                "roomMin" : info[2].value,
+                "roomMax" : info[3].value,
+                "roomType" : info[4].value,
+                "roomCount" : info[5].value,
+                "roomInfo" : info[6].value
+            }
+
+            roomList.push(room);
+
+        }
+
+        return roomList;
 }
 
+
+// 데이터전달
+function dataConvey(responseData, responseUrl, Method){
+    $.ajax({
+            url: responseUrl,
+            dataType: "text",
+            contentType: "application/json; charset=utf-8",
+            method: Method,
+            data: JSON.stringify(responseData),
+            success : function(text){
+                alert("작업이 완료되었습니다.");
+                let url = "localhost:8080/admin";
+                location.replace(url);
+            },
+            error : function(text){
+                alert("다시 시도해주세요.");
+            }
+        });
+}
 
 // 객실 추가
 function roomAdd(){
 
     const roomBox = document.getElementsByClassName("room")[0];
 
-    roomBox.innerHTML = "<div class='card newcard'>"+
+    roomBox.innerHTML = "<div class='card'>"+
                              "<div class='flex'>"+
                                  "<div class='col-5'>"+
                                      "<img src='/image/camping/' class='card-img' alt='...'>"+
@@ -105,104 +126,23 @@ function roomAdd(){
 
 // 객실 추가취소
 function roomCancel(){
-    const roomBox = document.getElementsByClassName("newcard")[0];
+    const roomBox = document.getElementsByClassName("card")[0];
     roomBox.innerHTML = '';
     btnChange();
-}
-
-// 객실 등록
-function roomSave(){
-    const responseUrl = "/manager/room/save";
-
-    const roomList = document.getElementsByClassName("newcard")[0];
-    const roomValue = roomList.querySelectorAll(".roominfo");
-    //console.log(roomValue);
-
-    let responseData = {
-        "campingNo" : urlPull(),
-        "roomName" : roomValue[0].value,
-        "roomPrice" : roomValue[1].value,
-        "roomMin" : roomValue[2].value,
-        "roomMax" : roomValue[3].value,
-        "roomType" : roomValue[4].value,
-        "roomCount" : roomValue[5].value,
-        "roomInfo" : roomValue[6].value
-    }
-
-    //console.log(responseData);
-
-    btnChange();
-    dataConvey(responseData, responseUrl, "POST");
-
-}
-
-// 객실 수정
-function roomUpdate(){
-    const responseUrl = "/manager/room/update";
-
-    const valueList = document.querySelectorAll(".rinfo");
-    let roomList = new Array();
-
-    for(let i = 0; i < valueList.length; i++){
-        let info = valueList[i].querySelectorAll(".roominfo");
-
-        let room = {
-            "roomName" : info[0].value,
-            "roomPrice" : info[1].value,
-            "roomMin" : info[2].value,
-            "roomMax" : info[3].value,
-            "roomType" : info[4].value,
-            "roomCount" : info[5].value,
-            "roomInfo" : info[6].value
-        }
-
-        roomList.push(room);
-
-    }
-
-    let responseData = {
-        "campingNo" : urlPull(),
-        "roomList" : roomList
-    }
-
-    console.log(responseData);
-
-    dataConvey(responseData, responseUrl, "PUT");
 }
 
 // 버튼 설정
 function btnChange(){
     const target = document.getElementsByClassName("addbtn")[1];
-    const btn = document.getElementsByClassName("addbtn")[2];
 
         if(target.getAttribute("onclick") == "roomAdd()"){
             target.removeAttribute("onclick");
-            target.setAttribute("onclick","roomSave()");
-            target.innerHTML = "객실 등록";
-
-
-            btn.removeAttribute("onclick");
-            btn.setAttribute("onclick","roomCancel()");
-            btn.innerHTML = "등록 취소";
+            target.setAttribute("onclick","roomCancel()");
+            target.innerHTML = "등록 취소";
         }
         else{
             target.removeAttribute("onclick");
             target.setAttribute("onclick","roomAdd()");
             target.innerHTML = "객실 추가";
-
-            btn.removeAttribute("onclick");
-            btn.setAttribute("onclick","roomUpdate()");
-            btn.innerHTML = "객실 수정"
         }
-}
-
-// Url -  campingNO값 추출
-function urlPull(){
-    let url = new URL(window.location.href);
-    let urlPath = url.pathname; // /manager/{No}
-
-    let target = urlPath.split("/")[2];
-    //console.log(target);
-
-    return target;
 }

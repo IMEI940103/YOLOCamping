@@ -31,6 +31,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-mustache")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("mysql:mysql-connector-java:8.0.33")//springboot 버전 호환성
+	implementation("org.json:json:20231013")
+
+	implementation("com.googlecode.json-simple:json-simple:1.1.1")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
