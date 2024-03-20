@@ -1,6 +1,7 @@
 package com.YoloCamping.domain.dao.search;
 
 import com.YoloCamping.domain.dao.booking.Booking;
+import com.YoloCamping.web.dto.RoomDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;

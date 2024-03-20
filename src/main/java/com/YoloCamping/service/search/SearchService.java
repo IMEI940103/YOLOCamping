@@ -55,7 +55,7 @@ public class SearchService {
     // 예약 꽉 찬 객실 분류 (count 변수확인)
     public CampingDto intersection(CampingDto campingDto,List<BookingDto> bookingDtos){
 
-        List<RoomDto> roomDtos = campingDto.getRoomDtos();
+        List<RoomDto> roomDtos = campingDto.getRoomDto();
         int count;
 
         for(int y = 0; y < roomDtos.size(); y++) {
