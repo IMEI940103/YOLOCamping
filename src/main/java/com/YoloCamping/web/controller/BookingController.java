@@ -1,16 +1,15 @@
 package com.YoloCamping.web.controller;
 
-import com.YoloCamping.domain.dao.booking.Booking;
-import com.YoloCamping.domain.dao.booking.BookingRepository;
 import com.YoloCamping.service.search.BookingService;
-import com.YoloCamping.service.search.SearchService;
 import com.YoloCamping.web.dto.BookingDto;
-import lombok.Builder;
+import com.YoloCamping.web.dto.CampingDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,9 +20,24 @@ public class BookingController {
 
     @ResponseBody
     @PostMapping("/update")
-    public boolean booking(@RequestBody BookingDto bookingdto){
-        bookingService.save(bookingdto);
+    public boolean booking(@RequestBody BookingDto Bookingdto){
+        bookingService.save(Bookingdto);
         return true;
     }
+
+    @ResponseBody
+    @GetMapping(value = "/confirm")
+    public Map<String,Object> confirm(@RequestParam String name, @RequestParam String phone){
+        List<BookingDto> blist = bookingService.search(name, phone);
+        List<CampingDto> clist = bookingService.confirm_camping(blist);
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("booking",blist);
+        map.put("camping",clist);
+
+        return map;
+    }
+
+
 
 }

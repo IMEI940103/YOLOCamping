@@ -19,9 +19,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingNo;
 
-    @ManyToOne // Many - Booking, One - Room
-    @JoinColumn(name="roomNo") //JoinColumn() 참조할시 칼럼명 설정.
-    private Room room;
+    private Long roomNo;
 
     @Column
     @Temporal(TemporalType.DATE)
@@ -52,8 +50,8 @@ public class Booking {
     private int totalPrice;
 
     @Builder
-    public Booking(Room room, String userName, String userPhone, String payment, LocalDate start, LocalDate end, int price, int totalPrice) {
-        this.room = room;
+    public Booking(Long roomNo, String userName, String userPhone, String payment, LocalDate start, LocalDate end, int price, int totalPrice) {
+        this.roomNo = roomNo;
         this.userName = userName;
         this.userPhone = userPhone;
         this.payment = payment;

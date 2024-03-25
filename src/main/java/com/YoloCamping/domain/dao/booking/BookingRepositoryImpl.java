@@ -7,4 +7,6 @@ public interface BookingRepositoryImpl {
 
     List<Booking> findBySchedue(LocalDate start, LocalDate end);
 
+    List<Booking> findByConfirm(String name, String phone);
+
 }

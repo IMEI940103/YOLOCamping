@@ -47,9 +47,6 @@ public class Room {
     @Column
     private String roomImg; //사진
 
-    @OneToMany(mappedBy = "room")
-    private List<Booking> bookings = new ArrayList<>(); // Table에는 존재하지않지만 테이블에 속하는 객체안에 저장
-
     @Builder
     public Room(Camping camping, String roomName, String roomType,
                 int roomMin, int roomMax, int roomCount, int roomPrice,

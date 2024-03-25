@@ -31,4 +31,8 @@ public class PageController {
         return "content/management/add";
     }
 
+    @GetMapping("confirm") // 예약 확인 페이지
+    public String confirm_Page(){
+        return "content/service/confirm";
+    }
 }
