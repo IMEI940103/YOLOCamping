@@ -1,4 +1,4 @@
-function confirm(){
+const confirm = function (){
 
     let name = document.getElementById("name");
     let phone = document.getElementById("phone");
@@ -12,7 +12,7 @@ function confirm(){
     }
 }
 
-function dataConvey(){
+const dataConvey = function (){
 
     let name = document.getElementById("name");
     let phone = document.getElementById("phone");
@@ -34,7 +34,7 @@ function dataConvey(){
 
 }
 
-function listViewer(result){
+const listViewer = function (result){
     const content = document.getElementById("content");
     content.innerHTML = "";
 
@@ -52,25 +52,29 @@ function listViewer(result){
 
     for(let x = 0; x < camping.length; x++){
         let campingName = camping[x].campingName;
+        let roomDto = camping[x].roomDto;
 
-        for(let y = 0; y < camping[x].roomDto.length; y++){
+        for(let y = 0; y < roomDto.length; y++){
 
-            let roomName = camping[x].roomDto[y].roomName;
+            let roomNo = roomDto[y].roomNo;
+            let roomName = roomDto[y].roomName;
 
             for(let i = 0; i < booking.length; i++){
-                    let payment = booking[i].payment;
-                    let start = booking[i].start;
-                    let end = booking[i].end;
-                    let totalPrice = booking[i].totalPrice;
+                    if(roomNo == booking[i].roomNo){
+                        let payment = booking[i].payment;
+                        let start = booking[i].start;
+                        let end = booking[i].end;
+                        let totalPrice = booking[i].totalPrice;
 
-                    tag += "<div class='form-group flex'>" +
-                            "<div class = 'values'>" + campingName + "</div>" +
-                            "<div class = 'values'>" + roomName + "</div>" +
-                            "<div class = 'values'>" + start + "~" + end + "</div>" +
-                            "<div class = 'values'>" + totalPrice +"</div>" +
-                            "<div class = 'values'>" + payment + "</div>" +
-                            "<div class = 'values'> 예약 현황 </div>" +
-                            "</div>";
+                        tag += "<div class='form-group flex'>" +
+                                "<div class = 'values'>" + campingName + "</div>" +
+                                "<div class = 'values'>" + roomName + "</div>" +
+                                "<div class = 'values'>" + start + "~" + end + "</div>" +
+                                "<div class = 'values'>" + totalPrice +"</div>" +
+                                "<div class = 'values'>" + payment + "</div>" +
+                                "<div class = 'values'> 예약 현황 </div>" +
+                                "</div>";
+                    }
             }
         }
     }

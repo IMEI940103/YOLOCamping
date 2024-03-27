@@ -62,8 +62,6 @@ public class SearchService {
             RoomDto room = roomDtos.get(y);
             count = room.getRoomCount();
 
-            System.out.println(bookingDtos.size());
-
             for(int x = 0 ; x < bookingDtos.size() && count > 0; x++) {
                 BookingDto dto = bookingDtos.get(x);
 

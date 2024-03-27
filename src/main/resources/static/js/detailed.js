@@ -1,6 +1,6 @@
 
 // 상세검색시 실행
-function detailed(){
+const detailed = function (){
     let area = document.getElementById("area").value;
     let type = document.getElementById("type").value;
 
@@ -14,7 +14,7 @@ function detailed(){
 }
 
 // icon 클릭시 실행
-function simple(type){
+const icon = function (type){
     //날짜 정보 가져오기
     let date = new Date(); // 현재 날짜(로컬 기준) 가져오기
     let utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000); // uct 표준시 도출
@@ -34,7 +34,7 @@ function simple(type){
   }
 
 // camping 클릭시 실행 필요값 -> 입퇴실날짜
-function camping(no){
+const camping = function (no){
     let params = "?start=" + getStartDate().getTime();
     params += "&end=" + getEndDate().getTime();
 
@@ -42,7 +42,7 @@ function camping(no){
 }
 
 //return startDate Date 타입
-function getStartDate(){
+const getStartDate = function (){
   let target = document.getElementById("startDate").value;
   let tmp = parseInt(target);
   let targetDate = new Date(tmp);
@@ -51,7 +51,7 @@ function getStartDate(){
 }
 
 //return endDate Date타입
-function getEndDate(){
+const getEndDate = function (){
   let target = document.getElementById("endDate").value;
   let tmp = parseInt(target);
   let targetDate = new Date(tmp);

@@ -17,6 +17,7 @@ public class PageController {
 
     @GetMapping (value = {"yolocamping","yolo"}) // 사용자 페이지
     public String home_Page(Model model){
+
         return "home";
     }
 
