@@ -43,7 +43,7 @@
         퇴실일 : 현재날짜기준 +1일
 
     */
-    function calendarInit(){
+    const calendarInit = function (){
         let _startDay = document.getElementsByClassName("startday")[0]; // 화면에 보이는 입실일 - mm.dd
         let _endDay = document.getElementsByClassName("endday")[0]; // 화면에 보이는 퇴실일 - mm.dd
         let startDate = document.getElementById("startDate"); //  param값으로 전달할 값 - Long
@@ -70,7 +70,7 @@
     }
 
     // 화면에 표기될 월일 형식정리 MM.DD
-    function calendarViewMonth(sch_Month,sch_Day){
+    const calendarViewMonth = function (sch_Month,sch_Day){
         let tempMonth = sch_Month + 1; // 1월 = 0, 2월 = 1....
         let tempDay = sch_Day;
 
@@ -104,7 +104,7 @@
         금월 마지막일 날짜와 요일
         전월 마지막일 날짜와 요일
     */
-    function calendarSet() {
+    const calendarSet = function () {
 
         // 캘린더 렌더링
         renderCalender(thisMonth);
@@ -220,7 +220,7 @@
     let EndDate = null; // 조회할 예정 퇴실일
 
     // 선택된 날짜에 맞춰 css 변경
-    function schedulerSet(e, list){
+    const schedulerSet = function (e, list){
 
         let setStart = document.getElementsByClassName("startday")[0]; // 화면에 보이는 입실일
         let setEnd = document.getElementsByClassName("endday")[0]; // 화면에 보이는 퇴실일
@@ -270,7 +270,7 @@
         }
 
         // 숙박기간 css변경
-        function schedulerConfirm(StartDate, EndDate, list){
+        const schedulerConfirm = function (StartDate, EndDate, list){
             //일단위 값구하기 날짜를 -로 나눌경우 밀리언초단위로 계산.
             let days = Math.ceil((EndDate-StartDate) / (1000 * 60 * 60 * 24));
 

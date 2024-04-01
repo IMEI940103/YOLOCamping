@@ -5,7 +5,7 @@ const tag = document.getElementsByTagName("html")[0];
 const urlPath = url.pathname.split("/")[1];
 
 if(urlPath == "manager"){
-    tag.innerHTML = tag.innerHTML + "<script src=/js/manager.js></script>";
+    tag.innerHTML = tag.innerHTML + "<script src='/js/manager.js'></script>";
 }
 else{
 

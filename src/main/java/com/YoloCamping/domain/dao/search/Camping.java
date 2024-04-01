@@ -1,5 +1,6 @@
 package com.YoloCamping.domain.dao.search;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class Camping {
     @Column
     private String campingPhone; //연락처
 
+    @JsonIgnore
     @OneToMany(mappedBy = "camping")
     private List<Room> rooms = new ArrayList<>(); // campings Table에는 존재하지않지만 campings에 속하는 rooms을 객체안에 저장
 

@@ -1,1 +1,1 @@
-rootProject.name = "YoloCamping"
+rootProject.name = "YOLOCamping"

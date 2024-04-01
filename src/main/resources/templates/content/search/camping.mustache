@@ -37,7 +37,7 @@
     <section id="roominfo" class="container">
         <label>객실안내/예약</label>
         <div class="room">
-            {{#result.roomDtos}}
+            {{#result.roomDto}}
             <div class="card">
                 <div class="flex">
                     <div class="col-5">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            {{/result.roomDtos}}
+            {{/result.roomDto}}
         </div>
     </section>
 
@@ -67,3 +67,6 @@
 {{/result}}
 {{>layout/footer}}
 
+<script src ="/js/calender.js"></script>
+<script src ="/js/modal.js"></script>
+<script src ="/js/vaild.js"></script>

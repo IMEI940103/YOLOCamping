@@ -20,7 +20,6 @@ import java.util.Date;
 public class BookingDto {
 
     private Long roomNo;
-    private Room room;
     private String userName; // 예약자이름
     private String userPhone; // 예약자연락처
 //    private String condition; // 예약상황
@@ -38,7 +37,7 @@ public class BookingDto {
     private int totalPrice; // 총 결제금액
 
     public BookingDto(Booking booking){
-        this.room = booking.getRoom();
+        this.roomNo = booking.getRoomNo();
         this.userName = booking.getUserName();
         this.userPhone = booking.getUserPhone();
         this.payment = booking.getPayment();
@@ -48,9 +47,9 @@ public class BookingDto {
         this.totalPrice = booking.getTotalPrice();
     }
 
-    public Booking toEntity(Room room){
+    public Booking toEntity(){
         return Booking.builder()
-                .room(room)
+                .roomNo(roomNo)
                 .end(end)
                 .start(start)
                 .totalPrice(totalPrice)

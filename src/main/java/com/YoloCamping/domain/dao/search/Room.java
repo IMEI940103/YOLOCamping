@@ -1,6 +1,7 @@
 package com.YoloCamping.domain.dao.search;
 
 import com.YoloCamping.domain.dao.booking.Booking;
+import com.YoloCamping.web.dto.RoomDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -45,9 +46,6 @@ public class Room {
 
     @Column
     private String roomImg; //사진
-
-    @OneToMany(mappedBy = "room")
-    private List<Booking> bookings = new ArrayList<>(); // Table에는 존재하지않지만 테이블에 속하는 객체안에 저장
 
     @Builder
     public Room(Camping camping, String roomName, String roomType,

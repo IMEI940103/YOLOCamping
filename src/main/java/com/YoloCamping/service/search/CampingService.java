@@ -16,6 +16,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -34,7 +35,18 @@ public class CampingService {
     public void camping_save(CampingDto campingDto){
         campingRepository.save(campingDto.toEntity());
         Camping camping = campingRepository.findByCampingName(campingDto.getCampingName());
-        roomRepository.saveAll(campingDto.getRoomDto().stream().map(Room ::new).toList());
+        List<RoomDto> arr = campingDto.getRoomDto();
+
+        for(int i = 0; i < arr.size(); i++){
+            Room room = arr.get(i).toEntity(camping);
+            roomRepository.save(room);
+        }
+
+    }
+
+    @Transactional
+    public void camping_delete(){
+
     }
 
     @Transactional

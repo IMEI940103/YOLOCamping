@@ -26,7 +26,6 @@ public class RoomDto {
     private int roomPrice; // 가격
     private String roomInfo; //소개글
     private String roomImg; //사진
-    private List<Booking> bookings; // 예약현황
 
     public RoomDto(Room room){
         this.roomNo = room.getRoomNo();
@@ -38,7 +37,6 @@ public class RoomDto {
         this.roomPrice = room.getRoomPrice();
         this.roomInfo = room.getRoomInfo();
         this.roomImg = room.getRoomImg();
-        this.bookings = room.getBookings();
     }
 
     @Builder

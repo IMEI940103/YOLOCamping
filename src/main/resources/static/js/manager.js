@@ -1,6 +1,6 @@
 
 // 캠핑장 수정
-function campingUpdate(){
+const campingUpdate = function (){
     const responseUrl = "/manager/camp/update";
     const name = document.getElementById("c_name");
     const address = document.getElementById("address");
@@ -19,18 +19,37 @@ function campingUpdate(){
 }
 
 // 캠핑장 삭제
-function campingDelete(){
+const campingDelete = function (){
     const responseUrl = "/manager/camp/delete";
 
     let name = document.getElementById("c_name");
 
     responseData = {
-        "campingName" : name.value;
+        "campingName" : name.value
     }
 
     dataConvey(responseData, responseUrl, "DELETE");
 }
 
+// 캠핑장 등록
+const campingSave = function (){
+    const responseUrl = "/manager/camp/save";
+    let name = document.getElementById("c_name");
+    let address = document.getElementById("address");
+    let phone = document.getElementById("phone");
+    let info = document.getElementById("info");
+
+    let responseData = {
+        "campingName" : name.value,
+        "campingAddress" : address.value,
+        "campingPhone" : phone.value,
+        "campingInfo" : info.value,
+        "room" : roomAllSave();
+    }
+
+    dataConvey(responseData, responseUrl, "POST");
+
+}
 // 데이터 전달.
 function dataConvey(responseData, responseUrl, Method){
 
@@ -58,42 +77,44 @@ function roomAdd(){
 
     const roomBox = document.getElementsByClassName("room")[0];
 
-    roomBox.innerHTML = "<div class='card newcard'>"+
-                             "<div class='flex'>"+
-                                 "<div class='col-5'>"+
-                                     "<img src='/image/camping/' class='card-img' alt='...'>"+
-                                 "</div>"+
-                                 "<div class='col-7 rinfo'>"+
-                                     "<div class='card-body'>"+
-                                         "<div class='form-group flex'>"+
-                                             "<label for='name' class='col-form-label col-4'>객실 이름</label>"+
-                                             "<input type='text' class='form-control col-8 roominfo' name='name' value='' />"+
-                                         "</div>"+
-                                         "<div class='form-group flex'>"+
-                                             "<label for='price' class='col-form-label col-4'>1박 기준 가격</label>"+
-                                             "<input type='text' class='form-control col-8 roominfo' name='price' value='' />"+
-                                         "</div>"+
-                                         "<div class='form-group flex'>"+
-                                             "<label for='people' class='col-form-label col-4'>최소 / 최대 인원수</label>"+
-                                             "<input type='text' class='form-control col-4 roominfo' name='min' value='' />"+
-                                             "<input type='text' class='form-control col-4 roominfo' name='max' value='' />"+
-                                         "</div>"+
-                                         "<div class='form-group flex'>"+
-                                             "<label for='roomtype' class='col-form-label col-4'>객실타입</label>"+
-                                             "<select name='roomtype' class='form-control roominfo'>"+
-                                                 "<option value='glamping'>글램핑</option>"+
-                                                 "<option value='auto'>오토캠핑</option>"+
-                                                 "<option value='caravan'>카라반</option>"+
-                                                 "<option value='pension'>팬션</option>"+
-                                             "</select>"+
-                                         "</div>"+
-                                         "<div class='form-group flex'>"+
-                                             "<label for='people' class='col-form-label col-4'>객실 개수</label>"+
-                                             "<input type='text' class='form-control col-8 roominfo' name='count' value='' />"+
-                                         "</div>"+
-                                         "<div class='form-group'>"+
-                                             "<label for='people' class='col-form-label col-4'>객실 정보</label>"+
-                                             "<textarea class='form-control roominfo'></textarea>"+
+    roomBox.innerHTML = "<div class='newcard'>"+
+                            "<div class='card'>"+
+                                 "<div class='flex'>"+
+                                     "<div class='col-5'>"+
+                                         "<img src='/image/camping/' class='card-img' alt='...'>"+
+                                     "</div>"+
+                                     "<div class='col-7 rinfo'>"+
+                                         "<div class='card-body'>"+
+                                             "<div class='form-group flex'>"+
+                                                 "<label for='name' class='col-form-label col-4'>객실 이름</label>"+
+                                                 "<input type='text' class='form-control col-8 roominfo' name='name' value='' />"+
+                                             "</div>"+
+                                             "<div class='form-group flex'>"+
+                                                 "<label for='price' class='col-form-label col-4'>1박 기준 가격</label>"+
+                                                 "<input type='text' class='form-control col-8 roominfo' name='price' value='' />"+
+                                             "</div>"+
+                                             "<div class='form-group flex'>"+
+                                                 "<label for='people' class='col-form-label col-4'>최소 / 최대 인원수</label>"+
+                                                 "<input type='text' class='form-control col-4 roominfo' name='min' value='' />"+
+                                                 "<input type='text' class='form-control col-4 roominfo' name='max' value='' />"+
+                                             "</div>"+
+                                             "<div class='form-group flex'>"+
+                                                 "<label for='roomtype' class='col-form-label col-4'>객실타입</label>"+
+                                                 "<select name='roomtype' class='form-control roominfo'>"+
+                                                     "<option value='glamping'>글램핑</option>"+
+                                                     "<option value='auto'>오토캠핑</option>"+
+                                                     "<option value='caravan'>카라반</option>"+
+                                                     "<option value='pension'>팬션</option>"+
+                                                 "</select>"+
+                                             "</div>"+
+                                             "<div class='form-group flex'>"+
+                                                 "<label for='people' class='col-form-label col-4'>객실 개수</label>"+
+                                                 "<input type='text' class='form-control col-8 roominfo' name='count' value='' />"+
+                                             "</div>"+
+                                             "<div class='form-group'>"+
+                                                 "<label for='people' class='col-form-label col-4'>객실 정보</label>"+
+                                                 "<textarea class='form-control roominfo'></textarea>"+
+                                             "</div>"+
                                          "</div>"+
                                      "</div>"+
                                  "</div>"+

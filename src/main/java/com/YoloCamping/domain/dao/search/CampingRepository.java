@@ -31,4 +31,6 @@ public interface CampingRepository extends JpaRepository<Camping, Long> ,Camping
     @Query("SELECT c FROM Camping c WHERE c.campingName = :name")
     Camping findByCampingName(@Param("name") String campingName);
 
+
+
 }

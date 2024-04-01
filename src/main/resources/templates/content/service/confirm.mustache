@@ -1,0 +1,24 @@
+{{>layout/header}}
+
+<section id="content" class="container">
+    <div class="col-8" style="margin:auto">
+        <div class="guide">예약시 입력한 휴대폰번호와</div>
+        <div class="guide"> 예약자명을 입력해주세요.</div>
+        <div class="form-group flex">
+            <label for="name" class="col-form-label col-3">예약자 명</label>
+            <input type="text" class="form-control col-9" id="name" name="name" value="" />
+        </div>
+        <div class="form-group flex">
+            <label for="phone" class="col-form-label col-3">연락처</label>
+            <input type="text" class="form-control col-9" id="phone" name="phone" value="" />
+        </div>
+        <a onclick="confirm()" class="nextbtn">다음</a>
+    </div>
+</section>
+
+
+</body>
+</html>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src = "/js/vaild.js"></script>

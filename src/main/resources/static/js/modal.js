@@ -84,10 +84,10 @@ function booking(){
         let total = document.getElementsByClassName("value")[3].innerText;
 
         const responseData = {
+            "roomNo" : roomNo,
             "userName" : name,
             "userPhone" : phone,
             "payment" : payment,
-            "roomNo" : roomNo,
             "start" : getStartDate(), // 다른 js파일에 같은 함수가 있을 경우 제일 먼저 로딩된 함수를 사용함.
             "end" : getEndDate(), // 하여, 가까운 위치에 이동시킴.
             "price" : price,

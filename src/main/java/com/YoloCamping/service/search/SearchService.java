@@ -55,7 +55,7 @@ public class SearchService {
     // 예약 꽉 찬 객실 분류 (count 변수확인)
     public CampingDto intersection(CampingDto campingDto,List<BookingDto> bookingDtos){
 
-        List<RoomDto> roomDtos = campingDto.getRoomDtos();
+        List<RoomDto> roomDtos = campingDto.getRoomDto();
         int count;
 
         for(int y = 0; y < roomDtos.size(); y++) {
@@ -65,7 +65,7 @@ public class SearchService {
             for(int x = 0 ; x < bookingDtos.size() && count > 0; x++) {
                 BookingDto dto = bookingDtos.get(x);
 
-                if (room.getRoomNo().equals(dto.getRoom().getRoomNo())){
+                if (room.getRoomNo().equals(dto.getRoomNo())){
                     room.setRoomCount(--count);
                 }//if
 
@@ -79,7 +79,7 @@ public class SearchService {
     // 예상날짜와 겹치는 예약리스트
     public List<BookingDto> search(DetailedDto detailedDto){
         Date startTmp = new Date(detailedDto.getStart());
-        LocalDate start = LocalDate.of(startTmp.getYear()+1900,startTmp.getMonth()+1,startTmp.getDate());
+        LocalDate start = LocalDate.of(startTmp.getYear() + 1900,startTmp.getMonth()+1,startTmp.getDate());
         start.format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
 
         Date endTmp = new Date(detailedDto.getEnd()); // LocalDate Month 1~12... Date Month 0~11
@@ -116,7 +116,7 @@ public class SearchService {
     }
 
     public Room find_Room(Long roomNo){
-        return      roomRepository.findById(roomNo).get();
+        return roomRepository.findById(roomNo).get();
     }
 
 
