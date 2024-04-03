@@ -1,40 +1,3 @@
-
-    // 상세검색시 실행
-    const detailed = function (){
-        let area = document.getElementById("area").value;
-        let type = document.getElementById("type").value;
-
-        let params = "?area=" + area;
-        params += "&type=" + type;
-        params += "&start=" + getStartDate().getTime();
-        params += "&end=" + getEndDate().getTime();
-
-        location.href = "/search/detailed" + params;
-
-    }
-
-    // icon 클릭시 실행
-    const icon = function (type){
-
-        let s = today.getTime();
-        let e = tomorrow.getTime();
-
-        let params = "?type=" + type;
-        params += "&start=" + s;
-        params += "&end=" + e;
-
-        location.href = "/search/type" + params;
-
-      }
-
-    // camping 클릭시 실행 필요값 -> 입퇴실날짜
-    const camping = function (no){
-        let params = "?start=" + getStartDate().getTime();
-        params += "&end=" + getEndDate().getTime();
-
-        location.href = "/camp/" + no + params;
-    }
-
     //$(document).ready(function() {    JQuery 3.0 버전에서 지원 X
     $(document).ready(function(){
         calendarInit();
@@ -261,9 +224,7 @@
         cDate = new Date(currentYear,currentMonth,unSet);
 
         // 시작일과 선택한 날짜 비교 후 이전 일 경우 초기화
-        if(sDate >= cDate && checking == false){
-            checking = true;
-        }
+        if(sDate >= cDate && checking == false){ checking = true; }
 
 
         if(checking){ // 입실일 설정
@@ -337,18 +298,13 @@
                         day[x].classList.add("stay");
                     }
                 }
-                else{
-                    return ;
-                }
+                else{ return ; }
             }
         }
-        else{ // 연도가 같지 않을경우
-            return ;
-        }
+        else{ return ; }// 연도가 같지 않을경우
 
 
     }
-
 
     const setStartDate = function (date){
         let target = document.getElementById("startDate");
@@ -379,3 +335,62 @@
     }
 
 
+    function calender_submit(){
+        let url = new URL(window.location.href);
+        let urlpath = url.pathname;
+        let target = urlpath.split("/")[2];
+
+        let param = "&start=" + document.getElementById("startDate").value;
+        param += "&end=" + document.getElementById("endDate").value;
+
+        $.ajax({
+            url: "/search/rest?campingNo=" + target + param,
+            dataType : "json",
+            contentType: "application/json; charset=utf-8",
+            method: "Get",
+            success : function(result){
+                roomRest(result);
+            }
+        })
+    }
+
+    function roomRest(result){
+        let box = document.getElementsByClassName("room")[0];
+        box.innerHTML = "";
+
+        let restlist = result.Restcamp.roomDto;
+        for(let i = 0; i < restlist.length; i++){
+            let room = restlist[i];
+
+            let str;
+            if(room.roomCount != 0){ // 예약가능한 방이 존재 할 경우 활성화
+               str = "<a onclick='selection(" + room.roomName + ")' class='btn booking'>예약하기</a>";
+            }
+            else{ // 예약가능한 방이 없을경우
+               str = "<a class='btn booking disable'>예약하기</a>" ;
+            }
+
+            box.innerHTML = box.innerHTML +
+                                "<div class='card'>" +
+                                    "<div class='flex'>" +
+                                        "<div class='col-5'>" +
+                                            "<img src='/image/camping/" + room.roomImg + "' class='card-img' alt='...'>" +
+                                        "</div>" +
+                                        "<div class='col-7 rinfo'>" +
+                                            "<div class='card-body'>" +
+                                                "<h5 class='card-title'>" +
+                                                    "<div>" + room.roomName + "</div>" +
+                                                    "<div>" + room.roomPrice + "원</div>" +
+                                                "</h5>" +
+                                                "<p class='card-text'>기본정보 : 최소인원 - " + room.roomMin + "인 / 최대인원 - " + room.roomMax + "인 </p>" +
+                                                "<p class='card-text'>객실타입 : " + room.roomType + "</p>" +
+                                                "<p class='card-text'>남은객실 : " + room.roomCount + "</p>" +
+                                                "<p class='card-text'>객실설명 : " + room.roomInfo + "</p>" +
+                                            "</div>" +
+                                                str + // 예약가능한 방 존재여부에 따라 다른값
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>" ;
+
+        }
+    }

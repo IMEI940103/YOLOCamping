@@ -28,6 +28,7 @@ public class BookingController {
     @ResponseBody
     @GetMapping(value = "/confirm")
     public Map<String,Object> confirm(@RequestParam String name, @RequestParam String phone){
+
         List<BookingDto> blist = bookingService.search(name, phone);
         List<CampingDto> clist = bookingService.confirm_camping(blist);
 

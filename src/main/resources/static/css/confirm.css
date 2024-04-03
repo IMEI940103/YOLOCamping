@@ -1,0 +1,71 @@
+.guidebox{
+    margin-bottom:50px;
+}
+
+.guide{
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.textbox{
+    padding: 5px;
+}
+.textbox input{height:30px;}
+.textbox label{
+    text-align: end;
+    line-height: 30px;
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+.nextbtn{
+    text-align: end;
+    padding:10px;
+    width: 50px;
+    margin-left: 500px;
+    font-weight: 700;
+}
+
+.titlebox{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #000;
+}
+.title{
+    font-size: 15px;
+    padding: 10px 5px;
+    text-align: center;
+    width:110px;
+    border-right:1px solid #000;
+}
+.title:first-child{
+    width:120px;
+}
+.title:nth-child(3){
+    width:220px;
+}
+.title:last-child{
+    border:none;
+}
+
+.valuesbox{
+    display:  flex;
+    justify-content: space-between;
+}
+.values{
+    padding:10px 0px;
+    text-align: center;
+    width:110px;
+    border-right: 1px solid #000;
+    text-overflow: ellipsis;
+    white-space:normal;
+}
+.values:first-child{
+    width:120px;
+}
+.values:nth-child(3){
+    width:220px;
+}
+.values:last-child{
+    border:none;
+}

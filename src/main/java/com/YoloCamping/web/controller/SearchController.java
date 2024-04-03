@@ -43,6 +43,22 @@ public class SearchController {
         return "/content/search/camping";
     }
 
+    @GetMapping("/rest")
+    @ResponseBody
+    public Map<String, Object> roomRest(@RequestParam Long campingNo, @RequestParam Long start, @RequestParam Long end){
+        DetailedDto detailedDto = DetailedDto.builder()
+                .start(start)
+                .end(end)
+                .build();
+
+        CampingDto campingdto = searchService.find_Camping(campingNo).get(0);
+        List<BookingDto> list = searchService.search(detailedDto);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("Restcamp", searchService.intersection(campingdto,list));
+        return map;
+    }
+
     @PostMapping("/roomSelect")
     @ResponseBody
     public Map<String,Object> search_roomInfo(@RequestBody Map<String,Object> map){
