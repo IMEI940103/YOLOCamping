@@ -1,18 +1,14 @@
 package com.YoloCamping.web.dto;
 
-import com.YoloCamping.domain.dao.booking.Booking;
-import com.YoloCamping.domain.dao.search.Camping;
-import com.YoloCamping.domain.dao.search.Room;
+import com.YoloCamping.domain.booking.Booking;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter

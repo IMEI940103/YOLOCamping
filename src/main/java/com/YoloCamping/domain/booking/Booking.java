@@ -1,6 +1,6 @@
-package com.YoloCamping.domain.dao.booking;
+package com.YoloCamping.domain.booking;
 
-import com.YoloCamping.domain.dao.search.Room;
+import com.YoloCamping.domain.BaseEntityTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Booking {
+public class Booking extends BaseEntityTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

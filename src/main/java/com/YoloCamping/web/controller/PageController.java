@@ -17,7 +17,7 @@ public class PageController {
 
     @GetMapping (value = {"yolocamping","yolo"}) // 사용자 페이지
     public String home_Page(Model model){
-
+        model.addAttribute("best",searchService.recommend_Camping());// 메인화면의 추천캠핑장
         return "home";
     }
 

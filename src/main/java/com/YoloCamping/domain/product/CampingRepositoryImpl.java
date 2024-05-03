@@ -1,4 +1,4 @@
-package com.YoloCamping.domain.dao.search;
+package com.YoloCamping.domain.product;
 
 
 import java.util.List;
@@ -14,5 +14,6 @@ public interface CampingRepositoryImpl {
 
     Camping findByCampingName(String campingName);
 
+    int countByCamping();
 
 }

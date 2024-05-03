@@ -1,7 +1,6 @@
 package com.YoloCamping.service.search;
 
-import com.YoloCamping.domain.dao.booking.BookingRepository;
-import com.YoloCamping.domain.dao.search.Camping;
+import com.YoloCamping.domain.booking.BookingRepository;
 import com.YoloCamping.web.dto.BookingDto;
 import com.YoloCamping.web.dto.CampingDto;
 import com.YoloCamping.web.dto.RoomDto;

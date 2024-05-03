@@ -1,0 +1,50 @@
+    <section id="modal" class="container">
+        <div class="flex j-b">
+            <label>객실정보</label>
+        </div>
+        <div class="room">
+            <div class="card">
+                <div class="flex">
+                    <div class="col-5">
+                        <img src="" class="card-img" alt="..." />
+                    </div>
+                    <div class="col-7 rinfo">
+                        <div class="card-body">
+                            <div class="form-group flex">
+                                <label for = "roomName" class="col-form-label col-4">객실 이름</label>
+                                <input type="text" class="form-control col-8 roominfo" name="roomName" value="" />
+                            </div>
+                            <div class="form-group flex">
+                                <label for = "roomPrice" class="col-form-label col-4">1박 기준 가격</label>
+                                <input type="text" class="form-control col-8 roominfo" name="roomPrice" value="" />
+                            </div>
+                            <div class="form-group flex">
+                                <label for = "roomPeople" class="col-form-label col-4">최소 / 최대 인원수</label>
+                                <input type="text" class="form-control col-8 roominfo" name="roomMin" value="" />
+                                <input type="text" class="form-control col-8 roominfo" name="roomMax" value="" />
+                            </div>
+                            <div class="form-group flex">
+                                <label for = "roomType" class="col-form-label col-4">객실 타입</label>
+                                <select name="roomType" class="form-control roominfo">
+                                    <option value="glamping">글램핑</option>
+                                    <option value="auto">오토캠핑</option>
+                                    <option value="caravan">카라반</option>
+                                    <option value="pension">팬션</option>
+                                </select>
+                            </div>
+                            <div class="form-group flex">
+                                <label for = "roomCount" class="col-form-label col-4">객실 개수</label>
+                                <input type="text" class="form-control col-8 roominfo" name="roomCount" value="" />
+                            </div>
+                            <div class="form-group flex">
+                                <label for = "roomInfo" class="col-form-label col-4">상세 설명</label>
+                                <textarea class="form-control roominfo" name="roomInfo"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a onclick="roomCreate()">등록하기</a>
+
+    </section>

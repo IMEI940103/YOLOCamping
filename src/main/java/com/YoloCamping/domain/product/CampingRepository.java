@@ -1,12 +1,10 @@
-package com.YoloCamping.domain.dao.search;
+package com.YoloCamping.domain.product;
 
-import com.YoloCamping.web.dto.CampingDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 // DBLayer접근 설정. <Entity클래스, PK타입>
 // Entity클래스와 같은 위치에 있어야함.
@@ -31,6 +29,10 @@ public interface CampingRepository extends JpaRepository<Camping, Long> ,Camping
     @Query("SELECT c FROM Camping c WHERE c.campingName = :name")
     Camping findByCampingName(@Param("name") String campingName);
 
+    @Query("SELECT count(c) FROM Camping c")
+    int countByCamping();
 
+    @Query("SELECT c FROM Camping c WHERE c.campingNo = :no1 OR c.campingNo = :no2 OR c.campingNo =  :no3 OR c.campingNo =  :no4")
+    List<Camping> recommend_Camping(@Param("no1") int len1,@Param("no2") int len2,@Param("no3") int len3,@Param("no4") int len4);
 
 }

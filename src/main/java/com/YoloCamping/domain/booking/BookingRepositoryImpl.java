@@ -1,4 +1,4 @@
-package com.YoloCamping.domain.dao.booking;
+package com.YoloCamping.domain.booking;
 
 import java.time.LocalDate;
 import java.util.List;

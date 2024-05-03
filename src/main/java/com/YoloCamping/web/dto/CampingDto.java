@@ -1,7 +1,7 @@
 package com.YoloCamping.web.dto;
 
-import com.YoloCamping.domain.dao.search.Camping;
-import com.YoloCamping.domain.dao.search.Room;
+import com.YoloCamping.domain.product.Camping;
+import com.YoloCamping.domain.product.Room;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

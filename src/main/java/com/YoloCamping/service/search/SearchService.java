@@ -1,10 +1,9 @@
 package com.YoloCamping.service.search;
 
-import com.YoloCamping.domain.dao.booking.BookingRepository;
-import com.YoloCamping.domain.dao.search.Camping;
-import com.YoloCamping.domain.dao.search.CampingRepository;
-import com.YoloCamping.domain.dao.search.Room;
-import com.YoloCamping.domain.dao.search.RoomRepository;
+import com.YoloCamping.domain.booking.BookingRepository;
+import com.YoloCamping.domain.product.CampingRepository;
+import com.YoloCamping.domain.product.Room;
+import com.YoloCamping.domain.product.RoomRepository;
 import com.YoloCamping.web.dto.BookingDto;
 import com.YoloCamping.web.dto.CampingDto;
 import com.YoloCamping.web.dto.DetailedDto;
@@ -13,11 +12,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -29,6 +28,7 @@ public class SearchService {
     private final RoomRepository roomRepository;
     private final BookingRepository bookingRepository;
 
+    //캠핑장 상세검색.
     public List<CampingDto> detailed(DetailedDto detailedDto){
 
         List<BookingDto> bookinglist = search(detailedDto);
@@ -97,12 +97,14 @@ public class SearchService {
                     .map(CampingDto::new).collect(Collectors.toList());
     }
 
+    // 선택한 캠핑장
     public List<CampingDto> find_Camping(Long camping){
         return campingRepository.findById(camping)
                 .stream()
                     .map(CampingDto::new).collect(Collectors.toList());
     }
 
+    // 전체 캠핑장 목록
     public List<CampingDto> find_AllCamping(){
         return campingRepository.findAll()
                 .stream()
@@ -119,6 +121,29 @@ public class SearchService {
         return roomRepository.findById(roomNo).get();
     }
 
+    //메인페이지의 추천, 랜덤한 캠핑장 보여주기.
+    public List<CampingDto> recommend_Camping(){
+        int len = campingRepository.countByCamping(); // 등록된 캠핑장의 전체개수
+        int[] ramdom_len = new int[4]; // 메인에 표기될 추천캠핑장수.
 
+        for(int i = 0; i < 4; i++){
+            Random ramdom = new Random(len-1); // index 로 사용해야하기때문에 -1적용
+
+            for(int x = 0; x < i; x++){ // 중복된 값인지 검사
+                if(ramdom_len[x] == ramdom.nextInt()){
+                    --i;
+                    break;
+                }
+                else{
+                    ramdom_len[i] = ramdom.nextInt();
+                }
+            }
+        }
+
+        return campingRepository.recommend_Camping(ramdom_len[0],ramdom_len[1],ramdom_len[2],ramdom_len[3])
+                .stream()
+                    .map(CampingDto::new)
+                        .collect(Collectors.toList());
+    }
 
 }

@@ -35,6 +35,10 @@ dependencies {
 
 	implementation("com.googlecode.json-simple:json-simple:1.1.1")
 
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 }
