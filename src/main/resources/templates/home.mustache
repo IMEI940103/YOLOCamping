@@ -50,24 +50,14 @@
 
     <section id="best">
         <div class="container">
-            <h5>인기 캠핑장</h5>
+            <h5>추천 캠핑장</h5>
             <div class="best_list">
-                <a href="./search/camping.jsp?" class="card best_camping">
-                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
-                    <div class="camping_name">이름이름이름</div>
+                {{#recommend}}
+                <a href="/search/{{campingNo}}" class="card best_camping">
+                    <img src="/image/{{campingImage}}" alt="캠핑장메인사진" />
+                    <div class="camping_name">{{campingName}}</div>
                 </a>
-                <a href="./search/camping.jsp?" class="card best_camping">
-                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
-                    <div class="camping_name">이름이름이름</div>
-                </a>
-                <a href="./search/camping.jsp?" class="card best_camping">
-                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
-                    <div class="camping_name">이름이름이름</div>
-                </a>
-                <a href="./search/camping.jsp?" class="card best_camping">
-                    <img src="/image/camping01.png" alt="캠핑장메인사진" />
-                    <div class="camping_name">이름이름이름</div>
-                </a>
+                {{/recommend}}
             </div>
         </div>
     </section>

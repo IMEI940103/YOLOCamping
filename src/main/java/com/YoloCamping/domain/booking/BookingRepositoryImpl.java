@@ -9,4 +9,6 @@ public interface BookingRepositoryImpl {
 
     List<Booking> findByConfirm(String name, String phone);
 
+    //List<Booking> randomBooking(LocalDate start, LocalDate end);
+
 }

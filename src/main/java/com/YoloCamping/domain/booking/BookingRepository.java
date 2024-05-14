@@ -18,7 +18,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long>, Booking
     List<Booking> findByConfirm(@Param("name")String name, @Param("phone")String phone);
 
     // 지난 3월간 예약수많은 room No값 구하기
-    @Query("SELECT b FROM Booking b WHERE b.start >= :start AND b.start <= end")
-    List<Booking> bestBooking(@Param("start")LocalDate start, @Param("end") LocalDate end);
+    //@Query("SELECT b FROM Booking b WHERE b.start >= :start AND b.start <= end")
+    //List<Booking> randomBooking(@Param("start")LocalDate start, @Param("end") LocalDate end);
 
 }

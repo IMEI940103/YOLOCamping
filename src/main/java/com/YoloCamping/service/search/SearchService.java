@@ -123,24 +123,24 @@ public class SearchService {
 
     //메인페이지의 추천, 랜덤한 캠핑장 보여주기.
     public List<CampingDto> recommend_Camping(){
-        int len = campingRepository.countByCamping(); // 등록된 캠핑장의 전체개수
-        int[] ramdom_len = new int[4]; // 메인에 표기될 추천캠핑장수.
+        Long len = campingRepository.countByCamping(); // 등록된 캠핑장의 전체개수
+        int[] random_len = new int[4]; // 메인에 표기될 추천캠핑장수.
 
         for(int i = 0; i < 4; i++){
-            Random ramdom = new Random(len-1); // index 로 사용해야하기때문에 -1적용
+            Random random = new Random(len-1); // index 로 사용해야하기때문에 -1적용
 
             for(int x = 0; x < i; x++){ // 중복된 값인지 검사
-                if(ramdom_len[x] == ramdom.nextInt()){
+                if(random_len[x] == random.nextInt()){
                     --i;
                     break;
                 }
                 else{
-                    ramdom_len[i] = ramdom.nextInt();
+                    random_len[i] = random.nextInt();
                 }
             }
         }
 
-        return campingRepository.recommend_Camping(ramdom_len[0],ramdom_len[1],ramdom_len[2],ramdom_len[3])
+        return campingRepository.recommend_Camping(random_len[0],random_len[1],random_len[2],random_len[3])
                 .stream()
                     .map(CampingDto::new)
                         .collect(Collectors.toList());

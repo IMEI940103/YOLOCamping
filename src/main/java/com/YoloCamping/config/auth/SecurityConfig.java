@@ -1,5 +1,6 @@
 package com.YoloCamping.config.auth;
 
+import com.YoloCamping.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.graphql.security.GraphQlWebMvcSecurityAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -16,8 +17,10 @@ public class SecurityConfig extends GraphQlWebMvcSecurityAutoConfiguration {
         http
                 .authorizeHttpRequests(//URL별 권한 관리를 설정하는 옵션의 시작점.
                         (authorzeHttpRequests) -> authorzeHttpRequests
-                                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                                        .requestMatchers("/**").hasRole("USER")
+                                        .requestMatchers("/admin/**").hasRole(Role.ADMIN.name())
+                                        //.requestMatchers("/**").hasRole("USER")
+                                .requestMatchers("/","/css/**","/images/**","js/**").permitAll()//모두사용가능
+                                .anyRequest().permitAll()// 설정한 이외값들도 모두사용
                 ) 
                 .logout(
                         (logout) -> logout
@@ -26,7 +29,7 @@ public class SecurityConfig extends GraphQlWebMvcSecurityAutoConfiguration {
                 )
                 .oauth2Login(
                         (oauth2Login) -> oauth2Login
-                                        .defaultSuccessUrl("/") //로그인 성공시 경로
+                                        .defaultSuccessUrl("/yolo") //로그인 성공시 경로
                                         .failureUrl("/login") // 로그인 실패시 경로
                                         .userInfoEndpoint(
                                                 (userInfoEndpoint) -> userInfoEndpoint

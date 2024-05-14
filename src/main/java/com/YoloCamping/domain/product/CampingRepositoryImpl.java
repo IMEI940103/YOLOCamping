@@ -14,6 +14,8 @@ public interface CampingRepositoryImpl {
 
     Camping findByCampingName(String campingName);
 
-    int countByCamping();
+    Long countByCamping();
+
+    List<Camping> recommend_Camping(int a, int b, int c, int d);
 
 }

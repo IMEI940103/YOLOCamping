@@ -29,8 +29,8 @@ public interface CampingRepository extends JpaRepository<Camping, Long> ,Camping
     @Query("SELECT c FROM Camping c WHERE c.campingName = :name")
     Camping findByCampingName(@Param("name") String campingName);
 
-    @Query("SELECT count(c) FROM Camping c")
-    int countByCamping();
+    @Query("SELECT count(c.campingNo) FROM Camping c")
+    Long countByCamping();
 
     @Query("SELECT c FROM Camping c WHERE c.campingNo = :no1 OR c.campingNo = :no2 OR c.campingNo =  :no3 OR c.campingNo =  :no4")
     List<Camping> recommend_Camping(@Param("no1") int len1,@Param("no2") int len2,@Param("no3") int len3,@Param("no4") int len4);
