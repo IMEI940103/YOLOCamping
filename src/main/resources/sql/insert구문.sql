@@ -1,3 +1,4 @@
+use yolocamping;
 insert into camping(camping_no,camping_number,camping_name,camping_address,camping_ground,camping_pet,camping_info,camping_img,camping_phone) values
 	(1,'123456adb789','산청 프리미엄 글램핑캠핑장','경상남도 산청군 산청읍 웅석봉로154번길 89-17','river,forest',true,'넓은 야외수영장에서 신나는 시간을 보내고<br/>개별 바베큐장에서 프라이빗한 여행이 가능한 공간,<br/><br/>산청 프리미엄 글램핑은 여러분들에게 행복한 시간을 제공합니다.','default.jpg','010-1234-5678'),
     (2,'1234512389','예산 팜앤투어캠핑카라반','충청남도 예산군 광시면 시목1길70-43','river,forest',false,'저희 팜앤투어에 오신 것을 환영합니다.<br/>팜앤투어에서는 카라반 및 과수원체험등 가족과 동료<br/>그리고 연인과 함께 증거운 시간을 보내실 수 있습니다.<br/>행복하고 증거운 추억 만드시길 바랍니다.','default.jpg','010-1234-5678'),

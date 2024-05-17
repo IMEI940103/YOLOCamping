@@ -27,7 +27,7 @@ public class SearchController {
 
     @GetMapping("/{camping}") // 1개의 캠핑장
     public String campingInfo(@PathVariable Long camping,
-                              @RequestParam Long start, @RequestParam Long end,
+                              @RequestParam(required = false) Long start, @RequestParam(required = false) Long end,
                               Model model){
         DetailedDto detailedDto = DetailedDto.builder()
                 .start(start)

@@ -1,19 +1,18 @@
 package com.YoloCamping.service.search;
 
 import com.YoloCamping.domain.booking.BookingRepository;
+import com.YoloCamping.domain.product.Camping;
 import com.YoloCamping.domain.product.CampingRepository;
 import com.YoloCamping.domain.product.Room;
 import com.YoloCamping.domain.product.RoomRepository;
-import com.YoloCamping.web.dto.BookingDto;
-import com.YoloCamping.web.dto.CampingDto;
-import com.YoloCamping.web.dto.DetailedDto;
-import com.YoloCamping.web.dto.RoomDto;
+import com.YoloCamping.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -122,27 +121,37 @@ public class SearchService {
     }
 
     //메인페이지의 추천, 랜덤한 캠핑장 보여주기.
-    public List<CampingDto> recommend_Camping(){
-        Long len = campingRepository.countByCamping(); // 등록된 캠핑장의 전체개수
-        int[] random_len = new int[4]; // 메인에 표기될 추천캠핑장수.
+    public List<RecommendCampingDto> recommend_Camping(){
+        List<Camping> campingList = campingRepository.findAll(); //전체 캠핑장 출력
+        Long seed = new Date().getTime() / 60*60*60; // 하루단위
+        Random random = new Random(); //
+        random.setSeed(seed); // 하루 단위로 출력시드 변경
 
-        for(int i = 0; i < 4; i++){
-            Random random = new Random(len-1); // index 로 사용해야하기때문에 -1적용
+        List<Camping> list = new ArrayList<>();
 
-            for(int x = 0; x < i; x++){ // 중복된 값인지 검사
-                if(random_len[x] == random.nextInt()){
-                    --i;
+        for(int x = 0; x < 4; x++){
+            int len = random.nextInt(campingList.size());
+
+            if(x == 0) {
+                list.add(x,campingList.get(len));
+                continue;
+            }
+
+            for(int y = 0; y < x; y++) {
+                if (list.get(y).getCampingNo().equals(campingList.get(len).getCampingNo())) {
+                    --x;
                     break;
                 }
                 else{
-                    random_len[i] = random.nextInt();
+                    list.add(x,campingList.get(len));
+                    break;
                 }
             }
         }
 
-        return campingRepository.recommend_Camping(random_len[0],random_len[1],random_len[2],random_len[3])
+        return list
                 .stream()
-                    .map(CampingDto::new)
+                    .map(RecommendCampingDto::new)
                         .collect(Collectors.toList());
     }
 
