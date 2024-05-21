@@ -1,5 +1,7 @@
 package com.YoloCamping.web.controller;
 
+import com.YoloCamping.config.auth.LoginUser;
+import com.YoloCamping.config.auth.dto.SessionUser;
 import com.YoloCamping.service.search.SearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,9 +17,9 @@ public class PageController {
 
     final private SearchService searchService;
 
-    @GetMapping (value = {"yolocamping","yolo"}) // 사용자 페이지
-    public String home_Page(Model model){
-
+    @GetMapping (value = {"yolocamping","yolo",""}) // 사용자 페이지
+    public String home_Page(Model model, @LoginUser SessionUser sessionUser){
+        model.addAttribute("recommend",searchService.recommend_Camping());// 메인화면의 추천캠핑장
         return "home";
     }
 

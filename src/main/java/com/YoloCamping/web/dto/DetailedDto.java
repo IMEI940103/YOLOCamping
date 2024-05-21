@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -31,14 +32,17 @@ public class DetailedDto {
     public DetailedDto(String area, String type, Long start, Long end){
         this.area = area;
         this.type = type;
+
+        LocalDate date = LocalDate.now();
+        Date today = new Date(date.getYear(),date.getMonthValue()-1,date.getDayOfMonth());
+        Date tomorrow = new Date(date.getYear(),date.getMonthValue()-1,date.getDayOfMonth()+1);
+
+        if(start == null){ start = today.getTime(); }
+        if(end == null){ end = tomorrow.getTime(); }
+
         this.start = start;
         this.end = end;
+
     }
 
-    @Builder
-    public DetailedDto(String type, Long start, Long end){
-        this.type = type;
-        this.start = start;
-        this.end = end;
-    }
 }

@@ -27,7 +27,6 @@ const dataConvey = function (){
         method: "GET",
         data: params,
         success : function(result){
-            console.log(result);
             listViewer(result);
         }
     });
@@ -38,7 +37,7 @@ const listViewer = function (result){
     const content = document.getElementById("content");
     content.innerHTML = "";
 
-    let tag = "<div class='form-group flex'>" +
+    let tag = "<div class='titlebox'>" +
                 "<div class = 'title'> 캠핑장명 </div>" +
                 "<div class = 'title'> 객실이름 </div>" +
                 "<div class = 'title'> 이용날짜 </div>" +
@@ -52,12 +51,12 @@ const listViewer = function (result){
 
     for(let x = 0; x < camping.length; x++){
         let campingName = camping[x].campingName;
-        let roomDto = camping[x].roomDto;
+        let dto = camping[x].rooms;
 
-        for(let y = 0; y < roomDto.length; y++){
+        for(let y = 0; y < dto.length; y++){
 
-            let roomNo = roomDto[y].roomNo;
-            let roomName = roomDto[y].roomName;
+            let roomNo = dto[y].roomNo;
+            let roomName = dto[y].roomName;
 
             for(let i = 0; i < booking.length; i++){
                     if(roomNo == booking[i].roomNo){
@@ -66,14 +65,14 @@ const listViewer = function (result){
                         let end = booking[i].end;
                         let totalPrice = booking[i].totalPrice;
 
-                        tag += "<div class='form-group flex'>" +
-                                "<div class = 'values'>" + campingName + "</div>" +
-                                "<div class = 'values'>" + roomName + "</div>" +
-                                "<div class = 'values'>" + start + "~" + end + "</div>" +
-                                "<div class = 'values'>" + totalPrice +"</div>" +
-                                "<div class = 'values'>" + payment + "</div>" +
-                                "<div class = 'values'> 예약 현황 </div>" +
-                                "</div>";
+                        tag = tag + "<div class='valuesbox'>" +
+                                        "<div class = 'values'>" + campingName + "</div>" +
+                                        "<div class = 'values'>" + roomName + "</div>" +
+                                        "<div class = 'values'>" + start + "~" + end + "</div>" +
+                                        "<div class = 'values'>" + totalPrice +"</div>" +
+                                        "<div class = 'values'>" + payment + "</div>" +
+                                        "<div class = 'values'> 예약 현황 </div>" +
+                                    "</div>";
                     }
             }
         }

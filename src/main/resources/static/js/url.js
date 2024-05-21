@@ -4,10 +4,8 @@ const url = new URL(window.location.href);
 const tag = document.getElementsByTagName("html")[0];
 const urlPath = url.pathname.split("/")[1];
 
-if(urlPath == "manager"){
-    tag.innerHTML = tag.innerHTML + "<script src='/js/manager.js'></script>";
-}
-else{
+// 메인페이지, 캠핑검색페이지, 캠핑선택페이지의 상세검색란 값 설정
+if(urlPath == "yolo" || urlPath == "search" || urlPath == "camp"){
 
     // URL.SearchParams -- URL 파라미터객체
     const urlParams = url.searchParams;

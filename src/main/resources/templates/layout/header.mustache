@@ -5,6 +5,8 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+        <title>YOLO Camping</title>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
         <link rel="stylesheet" href="/css/common.css" />
@@ -15,7 +17,7 @@
         <link rel="stylesheet" href="/css/camping.css" />
         <link rel="stylesheet" href="/css/booking.css" />
 
-        <title>YOLO Camping</title>
+
     </head>
     <body>
     <section id="header" class="container">
@@ -24,9 +26,23 @@
                 <img src="/image/company-logo/logo-b.png" alt="회사로고" />
             </a>
             <ul class="navbar">
+                {{^userName}}
+                    <li>
+                        <a href="/oauth2/authorization/google">구글 로그인</a>
+                    </li>
+                    <li>
+                        <a href="/oauth2/authorization/naver">네이버 로그인</a>
+                    </li>
+                {{/userName}}
                 <li>
                     <a href="/confirm">예약확인</a>
                 </li>
+                {{#userName}}
+                    <li>
+                        <a href="/logout">로그아웃</a>
+                    </li>
+                {{/userName}}
+
             </ul>
         </div>
     </section>

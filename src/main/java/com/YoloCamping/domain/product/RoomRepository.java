@@ -1,4 +1,4 @@
-package com.YoloCamping.domain.dao.search;
+package com.YoloCamping.domain.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

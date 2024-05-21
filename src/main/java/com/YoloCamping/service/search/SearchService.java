@@ -1,23 +1,21 @@
 package com.YoloCamping.service.search;
 
-import com.YoloCamping.domain.dao.booking.BookingRepository;
-import com.YoloCamping.domain.dao.search.Camping;
-import com.YoloCamping.domain.dao.search.CampingRepository;
-import com.YoloCamping.domain.dao.search.Room;
-import com.YoloCamping.domain.dao.search.RoomRepository;
-import com.YoloCamping.web.dto.BookingDto;
-import com.YoloCamping.web.dto.CampingDto;
-import com.YoloCamping.web.dto.DetailedDto;
-import com.YoloCamping.web.dto.RoomDto;
+import com.YoloCamping.domain.booking.BookingRepository;
+import com.YoloCamping.domain.product.Camping;
+import com.YoloCamping.domain.product.CampingRepository;
+import com.YoloCamping.domain.product.Room;
+import com.YoloCamping.domain.product.RoomRepository;
+import com.YoloCamping.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -29,6 +27,7 @@ public class SearchService {
     private final RoomRepository roomRepository;
     private final BookingRepository bookingRepository;
 
+    //캠핑장 상세검색.
     public List<CampingDto> detailed(DetailedDto detailedDto){
 
         List<BookingDto> bookinglist = search(detailedDto);
@@ -97,12 +96,14 @@ public class SearchService {
                     .map(CampingDto::new).collect(Collectors.toList());
     }
 
+    // 선택한 캠핑장
     public List<CampingDto> find_Camping(Long camping){
         return campingRepository.findById(camping)
                 .stream()
                     .map(CampingDto::new).collect(Collectors.toList());
     }
 
+    // 전체 캠핑장 목록
     public List<CampingDto> find_AllCamping(){
         return campingRepository.findAll()
                 .stream()
@@ -119,6 +120,39 @@ public class SearchService {
         return roomRepository.findById(roomNo).get();
     }
 
+    //메인페이지의 추천, 랜덤한 캠핑장 보여주기.
+    public List<RecommendCampingDto> recommend_Camping(){
+        List<Camping> campingList = campingRepository.findAll(); //전체 캠핑장 출력
+        Long seed = new Date().getTime() / 60*60*60; // 하루단위
+        Random random = new Random(); //
+        random.setSeed(seed); // 하루 단위로 출력시드 변경
 
+        List<Camping> list = new ArrayList<>();
+
+        for(int x = 0; x < 4; x++){
+            int len = random.nextInt(campingList.size());
+
+            if(x == 0) {
+                list.add(x,campingList.get(len));
+                continue;
+            }
+
+            for(int y = 0; y < x; y++) {
+                if (list.get(y).getCampingNo().equals(campingList.get(len).getCampingNo())) {
+                    --x;
+                    break;
+                }
+                else{
+                    list.add(x,campingList.get(len));
+                    break;
+                }
+            }
+        }
+
+        return list
+                .stream()
+                    .map(RecommendCampingDto::new)
+                        .collect(Collectors.toList());
+    }
 
 }

@@ -1,5 +1,6 @@
-package com.YoloCamping.domain.dao.search;
+package com.YoloCamping.domain.product;
 
+import com.YoloCamping.domain.BaseEntityTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Camping {
+public class Camping extends BaseEntityTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

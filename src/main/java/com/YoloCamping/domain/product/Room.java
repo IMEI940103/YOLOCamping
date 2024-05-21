@@ -1,19 +1,15 @@
-package com.YoloCamping.domain.dao.search;
+package com.YoloCamping.domain.product;
 
-import com.YoloCamping.domain.dao.booking.Booking;
-import com.YoloCamping.web.dto.RoomDto;
+import com.YoloCamping.domain.BaseEntityTime;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @NoArgsConstructor
 @Entity
-public class Room {
+public class Room extends BaseEntityTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

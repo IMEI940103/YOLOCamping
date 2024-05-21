@@ -23,61 +23,49 @@
     </div>
 </section>
 
-<section id="campinfo" class="container">
-    <div class="flex j-b">
-        <label>캠핑장 정보</label>
-        <a onclick="campingSave()" class="addr addbtn">등록하기</a>
-    </div>
+    <section id="campinfo" class="container">
+        <div class="flex j-b">
+            <label>캠핑장 정보</label>
+        </div>
+            <div class="card mb-3">
+                <div class="flex">
+                    <img src="/image/camping/default.jpg" alt="img" class="card-img"/>
 
-        <div class="card mb-3">
-            <div class="flex">
-                <img src="/image/camping/default.jpg" alt="img" class="card-img"/>
-
-                <div class="card-body col-8">
-                    <div class="form-group flex">
-                        <label for="name" class="col-form-label col-4">캠핑장 이름</label>
-                        <input type="text" class="form-control col-8 disable" id="c_name" value="" />
-                    </div>
-                    <div class="form-group flex">
-                        <label for="address" class="col-form-label col-4">주소</label>
-                        <input type="text" class="form-control col-8 disable" id="address" value="" />
-                    </div>
-                    <div class="form-group flex">
-                        <label for="phone" class="col-form-label col-4">연락처</label>
-                        <input type="text" class="form-control " id="phone" value="" />
-                    </div>
-                    <div class="form-group">
-                        <label for="info">캠핑장 정보</label>
-                        <textarea class="campinginfo form-control" id="info" placeholder="캠핑장 설명란입니다."></textarea>
+                    <div class="card-body col-8">
+                        <div class="form-group flex">
+                            <label for="name" class="col-form-label col-4">캠핑장 이름</label>
+                            <input type="text" class="form-control col-8 disable" id="c_name" value="" />
+                        </div>
+                        <div class="form-group flex">
+                            <label for="address" class="col-form-label col-4">주소</label>
+                            <input type="text" class="form-control col-8 disable" id="address" value="" />
+                        </div>
+                        <div class="form-group flex">
+                            <label for="phone" class="col-form-label col-4">연락처</label>
+                            <input type="text" class="form-control " id="phone" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="info">캠핑장 정보</label>
+                            <textarea class="campinginfo form-control" id="info" placeholder="캠핑장 설명란입니다."></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
+    </section>
+
+    <section id="roomlist" class="container">
+        <div class="flex j-b">
+            <label>객실목록</label>
+            <div>
+                <a onclick="modalOpen()" class="addr addbtn">객실 추가</a>
+            </div>
         </div>
+    </section>
 
-</section>
+    <a onclick="allSave()" class="addr addbtn"> 캠핑장 등록하기</a>
 
-<section id="roominfo" class="container">
-    <div class="flex j-b">
-        <label>객실정보</label>
-        <div>
-            <a onclick="roomAdd()" class="addr addbtn">객실 추가</a>
-            <a onclick="roomUpdate()" class="addr addbtn">객실 수정</a>
-        </div>
-    </div>
-    <div class="room">
+{{>content/management/add_room_modal}}
 
-    </div>
-</section>
-
-{{>layout/footer}}
-
-<script src="/js/manager.js"></script>
+<script src="/js/register.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-        }
-    }).open();
-</script>
+

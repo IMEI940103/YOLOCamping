@@ -1,25 +1,25 @@
 /*
 
     모든페이지에 공통적으로 들어가는  css파일
-
-
-@font-face {
-    font-family: 'noto';
-    src: url('/font/Noto_Sans_KR/NotoSansKR-Light.otf') format('truetype');
-}
-@font-face {
-    font-family: 'noto-m';
-    src: url('/font/Noto_Sans_KR/NotoSansKR-Medium.otf') format('truetype');
-}
-@font-face {
-    font-family: 'noto-r';
-    src: url('/font/Noto_Sans_KR/NotoSansKR-Regular.otf') format('truetype');
-}
-@font-face {
-    font-family: 'noto-b';
-    src: url('/font/Noto_Sans_KR/NotoSansKR-Bold.otf') format('truetype');
-}
 */
+
+@font-face {
+    font-family: "noto";
+    src: url("/font/Noto_Sans_KR/NotoSansKR-Light.otf") format("truetype");
+}
+@font-face {
+    font-family: "noto-m";
+    src: url("/font/Noto_Sans_KR/NotoSansKR-Medium.otf") format("truetype");
+}
+@font-face {
+    font-family: "noto-r";
+    src: url("/font/Noto_Sans_KR/NotoSansKR-Regular.otf") format("truetype");
+}
+@font-face {
+    font-family: "noto-b";
+    src: url("/font/Noto_Sans_KR/NotoSansKR-Bold.otf") format("truetype");
+}
+
 
 *{
     padding:0;

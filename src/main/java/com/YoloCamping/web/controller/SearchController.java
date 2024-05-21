@@ -27,7 +27,7 @@ public class SearchController {
 
     @GetMapping("/{camping}") // 1개의 캠핑장
     public String campingInfo(@PathVariable Long camping,
-                              @RequestParam Long start, @RequestParam Long end,
+                              @RequestParam(required = false) Long start, @RequestParam(required = false) Long end,
                               Model model){
         DetailedDto detailedDto = DetailedDto.builder()
                 .start(start)
@@ -41,6 +41,22 @@ public class SearchController {
         model.addAttribute("result",searchService.intersection(campingDto,list));
         model.addAttribute("cssfile","camping_result");
         return "/content/search/camping";
+    }
+
+    @GetMapping("/rest")
+    @ResponseBody
+    public Map<String, Object> roomRest(@RequestParam Long campingNo, @RequestParam Long start, @RequestParam Long end){
+        DetailedDto detailedDto = DetailedDto.builder()
+                .start(start)
+                .end(end)
+                .build();
+
+        CampingDto campingdto = searchService.find_Camping(campingNo).get(0);
+        List<BookingDto> list = searchService.search(detailedDto);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("Restcamp", searchService.intersection(campingdto,list));
+        return map;
     }
 
     @PostMapping("/roomSelect")
